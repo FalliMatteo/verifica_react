@@ -10,6 +10,7 @@ class UserController
     $username = $body["username"];
     $password = hash('sha256', $body["password"]);
     $email = $body["email"];
+    // da implementare controllo sull'univocità dell'email e dello username
     $token = substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(20/strlen($x)) )),1,20);
     $conn = new mysqli("my_mariadb", "root", "ciccio", "my_app");
     $raw_query = "INSERT INTO user(username, password, email, token) VALUES(?, ?, ?, ?)";
